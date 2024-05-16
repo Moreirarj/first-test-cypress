@@ -10,14 +10,25 @@ describe('Orange HRM Tests',() => {
      wrongCredentialAlert: ".oxd-alert--error"
   }
   
-it ('Login - Success',() =>{
-cy.visit('/auth/login')
-cy.get(selectorsList.usernameField).type(userData.userSuccess.username)
-cy.get(selectorsList.passwordField).type(userData.userSuccess.password)
-cy.get(selectorsList.loginButton).click()
-cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
-cy.get(selectorsList.sectionTitleTopBar).contains('Dashboard')
-})
+//it ('Login - Success',() =>{
+//cy.visit('/auth/login')
+//cy.get(selectorsList.usernameField).type(userData.userSuccess.username)
+//cy.get(selectorsList.passwordField).type(userData.userSuccess.password)
+//cy.get(selectorsList.loginButton).click()
+//cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
+//cy.get(selectorsList.sectionTitleTopBar).contains('Dashboard')
+//})
+
+it.only ('User Info Update - Success',() =>{
+
+  cy.visit('/auth/login')
+  cy.get(selectorsList.usernameField).type(userData.userSuccess.username)
+  cy.get(selectorsList.passwordField).type(userData.userSuccess.password)
+  cy.get(selectorsList.loginButton).click()
+  cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
+  cy.get(selectorsList.sectionTitleTopBar).contains('Dashboard')
+  cy.get('[href="/web/index.php/pim/viewMyDetails"]').click()
+  })
 it ('Login - Fail',() =>{
     cy.visit('/auth/login')
     cy.get(selectorsList.usernameField).type(userData.userFail.username)
