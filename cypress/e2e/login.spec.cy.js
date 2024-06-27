@@ -19,7 +19,7 @@ describe('Orange HRM Tests',() => {
 //cy.get(selectorsList.sectionTitleTopBar).contains('Dashboard')
 //})
 
-it.only ('User Info Update - Success',() =>{
+it.('User Info Update - Success',() =>{
 
   cy.visit('/auth/login')
   cy.get(selectorsList.usernameField).type(userData.userSuccess.username)
